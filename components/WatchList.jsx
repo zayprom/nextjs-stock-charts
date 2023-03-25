@@ -1,4 +1,4 @@
-import styles from '../styles/Home.module.css'
+import styles from '../styles/StockList.module.css'
 
 export const Watchlist = () => {
     return (
