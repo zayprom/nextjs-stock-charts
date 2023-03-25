@@ -1,0 +1,58 @@
+.sideBar {
+    grid-column: 1 / 1;
+    grid-row: 2 / 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    background-color: #1b2a41;
+}
+
+.logoArea {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 2 / 1;
+    grid-row: 2 / 1;
+    color: #fff;
+    background-color: #1b2a41;
+}
+
+@media (min-width: 320px) and (max-width: 699px) {
+    .sideBar {
+        display: none;
+    }
+
+    .logoArea {
+        display: none;
+    }
+}
+
+.sideNav {
+    width: 70%;
+}
+
+.navList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem; 
+}
+
+.navList .navLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2rem;
+    background-color: #324a5f;
+    color: #fff;
+    width: 100%;
+}
+
+.navList .navLink:hover {
+    background-color: #0c1821;
+    cursor: pointer;
+}
