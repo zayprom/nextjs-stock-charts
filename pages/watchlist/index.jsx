@@ -1,8 +1,8 @@
 import Head from "next/head";
 import styles from '../../styles/Home.module.css'
-import { SideBar } from "../components/SideBar";
-import { StockList } from "../components/StockList";
-import { Watchlist } from "../components/WatchList";
+import { SideBar } from "../../components/SideBar";
+import { StockList } from "../../components/StockList";
+import { Watchlist } from "../../components/WatchList";
 
 export default function WatchList () {
     return(

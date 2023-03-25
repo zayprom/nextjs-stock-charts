@@ -1,6 +1,6 @@
-import apiCall from "../api/apiCall";
+import apiCall from "../pages/api/apiCall";
 import { useState, useEffect } from "react";
-import styles from '../../styles/StockList.module.css'
+import styles from '../styles/StockList.module.css'
 import { Header } from "./Header";
 import { NewsBox } from "./NewsBox";
 

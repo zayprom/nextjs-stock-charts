@@ -1,6 +1,4 @@
-import styles from '../../styles/StockList.module.css'
-import { Header } from './Header'
-import { StockList } from './StockList'
+import styles from '../styles/Home.module.css'
 
 export const Watchlist = () => {
     return (

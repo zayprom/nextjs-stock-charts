@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
-import { StockList } from './components/StockList'
-import { SideBar } from './components/SideBar'
-import { NewsBox } from './components/NewsBox'
+import { StockList } from '../components/StockList'
+import { SideBar } from '../components/SideBar'
+import { NewsBox } from '../components/NewsBox'
 
 const inter = Inter({ subsets: ['latin'] })
 

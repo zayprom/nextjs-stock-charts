@@ -1,4 +1,4 @@
-import styles from '../../styles/SideBar.module.css'
+import styles from '../styles/SideBar.module.css'
 import Link from 'next/link'
 
 
