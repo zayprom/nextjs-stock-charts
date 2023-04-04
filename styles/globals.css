@@ -31,3 +31,11 @@ a {
 .down {
   color: red;
 }
+
+.border-up {
+  border-color: greenyellow !important;
+}
+
+.border-down {
+  border-color: red !important;
+}

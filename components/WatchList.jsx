@@ -44,6 +44,10 @@ export const Watchlist = () => {
     const checkStockStatus = (change) => {
         return change > 0 ? 'up' : 'down';
     }
+
+    const changeBorderColor = (stockStatus) => {
+        return stockStatus > 0 ? 'border-up' : 'border-down'
+    }
     
     return (
         <>
@@ -70,7 +74,9 @@ export const Watchlist = () => {
                         {stock.map((stockItem) => {
                             return(
                                 <tr key={stockItem.symbol}>
-                                    <th>{stockItem.symbol}</th>
+                                    <th>
+                                        <span className={styles.stockSymbol + ' ' + changeBorderColor(stockItem.data.d)}>{stockItem.symbol}</span>
+                                    </th>
                                     <td className={checkStockStatus(stockItem.data.d)}>{stockItem.data.c}</td>
                                     <td className={checkStockStatus(stockItem.data.d)}>{formatNumber(stockItem.data.d)}</td>
                                     <td className={checkStockStatus(stockItem.data.d)}>{formatNumber(stockItem.data.dp)}</td>

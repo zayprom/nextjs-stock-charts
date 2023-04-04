@@ -178,6 +178,11 @@
 
 .table td,
 .table th {
-    padding: 1.2rem 0.6rem;
+    padding: 0.8rem 0.6rem;
     vertical-align: bottom;
+}
+
+.stockSymbol {
+    border-left: 4px solid #fff;
+    padding: 0.6rem 1.2rem;
 }

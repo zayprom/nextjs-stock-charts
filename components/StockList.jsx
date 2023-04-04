@@ -49,7 +49,6 @@ export const StockList = () => {
 
     return (
         <>
-            <Header headingText={'Market News'} />
             <div className={styles.stockListContainer}>
                 <ul className={styles.stockListCards}>
                     {/* FIX: if there < 5 items, add empty box to add another item */}
