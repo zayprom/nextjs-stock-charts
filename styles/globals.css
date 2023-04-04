@@ -23,3 +23,11 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.up {
+  color: greenyellow;
+}
+
+.down {
+  color: red;
+}

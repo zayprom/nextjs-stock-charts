@@ -3,6 +3,7 @@ import styles from '../../styles/Home.module.css'
 import { SideBar } from "../../components/SideBar";
 import { StockList } from "../../components/StockList";
 import { Watchlist } from "../../components/WatchList";
+import { StockListContextProvider } from "@/context/stockListProvider";
 
 export default function WatchList () {
     return(
@@ -14,9 +15,11 @@ export default function WatchList () {
                 {/* <link rel="icon" href="/favicon.ico" /> */}
             </Head>
             <main className={styles.main}>
+                <StockListContextProvider>
                 <StockList />
                 <Watchlist />
                 <SideBar />
+                </StockListContextProvider>
             </main>
         </>
     )

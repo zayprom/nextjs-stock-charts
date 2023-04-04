@@ -1,12 +1,12 @@
 import apiCall from "../pages/api/apiCall";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import styles from '../styles/StockList.module.css'
 import { Header } from "./Header";
-import { NewsBox } from "./NewsBox";
+import { StockListContext } from "@/context/stockListProvider";
 
 export const StockList = () => {
     const [stock, setStock] = useState([])
-    const [stockList, setStockList] = useState(['MSFT', 'GOOGL', 'AAPL', 'AMZN', 'TSLA']);
+    const { stockList } = useContext(StockListContext)
 
     useEffect(() => {
         // Check when its mounted
@@ -31,7 +31,6 @@ export const StockList = () => {
                 if (isMounted) {
                     setStock(data)
                 }
-                console.log(data)
             } catch(err) {
                 console.log(err)
             }
@@ -39,6 +38,14 @@ export const StockList = () => {
         fetchData()
         return () => (isMounted = false)
     }, [stockList])
+
+    const formatNumber = (num) => {
+        return (num.toFixed(2))
+    }
+
+    const checkStockStatus = (change) => {
+        return change > 0 ? 'up' : 'down';
+    }
 
     return (
         <>
@@ -50,7 +57,7 @@ export const StockList = () => {
                         return (
                             <li className={styles.stockListCard} key={stockData.symbol}>
                                 <h2>{stockData.symbol}</h2>
-                                <p>{stockData.data.c} $</p>
+                                <p className={checkStockStatus(stockData.data.d)}>{formatNumber(stockData.data.c)} $</p>
                             </li>
                         )
                     })}

@@ -35,7 +35,7 @@ export const NewsBox = () => {
     }, [newsList])
 
     const formatDate = (timestamp) => {
-        const date = new Date(timestamp * + 1000)
+        const date = new Date(timestamp * 1000)
         const formattedDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear().toString()}`;
         return formattedDate
     }
@@ -46,7 +46,6 @@ export const NewsBox = () => {
             <ul className={styles.newsList}>
                 {news.map((item) => {
                     return item.data.map((singleNews) => {
-                        console.log(singleNews);
                         return (
                             <li key={singleNews.id} className={styles.newsListItem}>
                                 <img className={styles.newsListItemImg} src={singleNews.image} />
