@@ -5,8 +5,23 @@ import { SearchBox } from './SearchBox'
 import { StockListContext } from '@/context/stockListProvider'
 
 export const Watchlist = () => {
+    let nextId = 3
+    const categoriesList = [
+        {
+            id: 1,
+            item: 'All',
+        },
+        {
+            id: 2,
+            item: 'Tech'
+        }
+    ]
+
     const [stock, setStock] = useState([])
+    const [categories, setCategories] = useState(categoriesList)
+    const [newCategory, setNewCategory] = useState('')
     const { watchList } = useContext(StockListContext)
+    const [showInput, setShowInput] = useState(false)
 
     useEffect(() => {
         let isMounted = true
@@ -49,6 +64,15 @@ export const Watchlist = () => {
         return stockStatus > 0 ? 'border-up' : 'border-down'
     }
     
+    const handleAddNewCategory = (item) => {
+        setCategories([...categories, {
+            id: nextId++,
+            item: item
+        }])
+    }
+
+    const toggleInput = () => setShowInput(!showInput)
+    
     return (
         <>
             <div className={styles.newsBox}>
@@ -56,6 +80,39 @@ export const Watchlist = () => {
                     <h2>Watchlist</h2>
                     <SearchBox />
                 </div>
+                <ul className={styles.filtersList}>
+                    {categories.map((filter) => {
+                        return (
+                            <li key={filter.id} className={styles.filtersItem}>{filter.item}</li>
+                        )
+                    })}
+                    {showInput ? (
+                        <>
+                            <form onSubmit={(e) => {
+                                e.preventDefault()
+                                handleAddNewCategory(newCategory)
+                                setNewCategory('')
+                            }} className={styles.filterForm}>
+                                <input 
+                                    type='text' 
+                                    placeholder='Type category'
+                                    value={newCategory}
+                                    className={styles.newFiltersInput}
+                                    onChange={e => setNewCategory(e.target.value)}
+                                />
+                                <button className={styles.newFiltersInput} type='submit'>Add</button>
+                            </form>
+                            <button className={styles.cancelButton} onClick={toggleInput}>Cancel</button>
+                        </>
+                        )
+                        :
+                        (
+                        <>
+                            <button className={styles.newFiltersInput} onClick={toggleInput}>Add new</button>
+                        </>
+                        )
+                    }
+                </ul>
                 <table className={styles.table}>
                     <thead>
                         <tr>
@@ -77,19 +134,27 @@ export const Watchlist = () => {
                                     <th>
                                         <span className={styles.stockSymbol + ' ' + changeBorderColor(stockItem.data.d)}>{stockItem.symbol}</span>
                                     </th>
-                                    <td className={checkStockStatus(stockItem.data.d)}>{stockItem.data.c}</td>
+                                    <td className={checkStockStatus(stockItem.data.d)}>{formatNumber(stockItem.data.c)}</td>
                                     <td className={checkStockStatus(stockItem.data.d)}>{formatNumber(stockItem.data.d)}</td>
                                     <td className={checkStockStatus(stockItem.data.d)}>{formatNumber(stockItem.data.dp)}</td>
                                     <td>{formatNumber(stockItem.data.h)}</td>
                                     <td>{formatNumber(stockItem.data.l)}</td>
                                     <td>{formatNumber(stockItem.data.o)}</td>
-                                    <td>{stockItem.data.pc}</td>
-                                    <td><button onClick={() => console.log('favourite')}>Favourite</button></td>
+                                    <td>{formatNumber(stockItem.data.pc)}</td>
+                                    {/* <td><button>Favourite</button></td> */}
+                                    <td>
+                                        <select className={styles.formSelectCategory}>
+                                            {categories.map((option) => {
+                                                return (
+                                                    <option key={option.id} value={option.item}>{option.item}</option>
+                                                )
+                                            })}
+                                        </select>
+                                    </td>
+
                                 </tr>
                             )
-                            
                         })}
-                        {/* {console.log(stock)} */}
                     </tbody>
                 </table>
             </div>

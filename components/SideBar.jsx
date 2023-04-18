@@ -11,7 +11,7 @@ export const SideBar = () => {
                     <ul className={styles.navList}>
                         <Link className={styles.navLink} href="/"><li>Market news</li></Link>
                         <Link className={styles.navLink} href="/watchlist"><li>Watchlist</li></Link>
-                        <li className={styles.navLink}>Favourites</li>
+                        <Link className={styles.navLink} href="/categories"><li>Categories</li></Link>
                         <li className={styles.navLink}>Top sellers</li>
                         <li className={styles.navLink}>Top losers</li>
                     </ul>

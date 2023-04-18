@@ -39,10 +39,11 @@ export const NewsBox = () => {
         const formattedDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear().toString()}`;
         return formattedDate
     }
+    
 
     return(
         <div className={styles.newsBox}>
-            <h2>Newsroom</h2>
+        <h2>Newsroom</h2>
             <ul className={styles.newsList}>
                 {news.map((item) => {
                     return item.data.map((singleNews) => {

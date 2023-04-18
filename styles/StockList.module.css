@@ -186,3 +186,53 @@
     border-left: 4px solid #fff;
     padding: 0.6rem 1.2rem;
 }
+
+.filtersList {
+    list-style: none;
+    display: flex;
+    gap: 1.2rem;
+    font-size: 0.8rem;
+    margin-bottom: 1.2rem;
+}
+
+.filtersItem {
+    border: 1px solid #fff;
+    border-radius: 50px;
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+}
+
+.newFiltersInput {
+    border: 1px dashed #fff;
+    border-radius: 50px;
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+    background-color: #1b2a41;
+    color: #fff;
+    font-family: inherit;
+}
+
+.cancelButton {
+    border: 1px dashed red;
+    border-radius: 50px;
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+    background-color: #1b2a41;
+    color: #fff;
+    font-family: inherit;
+}
+
+.filterForm {
+    display: flex;
+    gap: 1.2rem;
+}
+
+.formSelectCategory {
+    font-family: inherit;
+    background-color: #1b2a41;
+    color: #fff;
+    padding: 0.2rem 0.4rem;
+    border: 1px solid #fff;
+    border-radius: 50px;
+}
+  

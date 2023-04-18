@@ -1,7 +1,6 @@
 import apiCall from "../pages/api/apiCall";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useMemo } from "react";
 import styles from '../styles/StockList.module.css'
-import { Header } from "./Header";
 import { StockListContext } from "@/context/stockListProvider";
 
 export const StockList = () => {
@@ -47,19 +46,23 @@ export const StockList = () => {
         return change > 0 ? 'up' : 'down';
     }
 
+    const memoizedStockList = useMemo(() => {
+        return stock.map((stockData) => {
+                return (
+                    <li className={styles.stockListCard} key={stockData.symbol}>
+                        <h2>{stockData.symbol}</h2>
+                        <p className={checkStockStatus(stockData.data.d)}>{formatNumber(stockData.data.c)} $</p>
+                    </li>
+                )
+            })
+    }, [stock])
+
     return (
         <>
             <div className={styles.stockListContainer}>
                 <ul className={styles.stockListCards}>
                     {/* FIX: if there < 5 items, add empty box to add another item */}
-                    {stock.map((stockData) => {
-                        return (
-                            <li className={styles.stockListCard} key={stockData.symbol}>
-                                <h2>{stockData.symbol}</h2>
-                                <p className={checkStockStatus(stockData.data.d)}>{formatNumber(stockData.data.c)} $</p>
-                            </li>
-                        )
-                    })}
+                    {memoizedStockList}
                 </ul>
             </div>
             
