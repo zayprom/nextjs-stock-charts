@@ -5,7 +5,6 @@ import { SearchBox } from './SearchBox'
 import { StockListContext } from '@/context/stockListProvider'
 
 export const Watchlist = () => {
-    let nextId = 3
     const categoriesList = [
         {
             id: 1,
@@ -65,11 +64,9 @@ export const Watchlist = () => {
     }
     
     const handleAddNewCategory = (item) => {
-        setCategories([...categories, {
-            id: nextId++,
-            item: item
-        }])
-    }
+        const nextId = categories.length > 0 ? categories[categories.length - 1].id + 1 : 1;
+        setCategories([...categories, { id: nextId, item }]);
+    };
 
     const toggleInput = () => setShowInput(!showInput)
     
